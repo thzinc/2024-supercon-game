@@ -236,8 +236,11 @@ async def main(client):
 
 config["queue_len"] = 16
 MQTTClient.DEBUG = True  # Optional: print diagnostic messages
-client = MQTTClient(config)
-try:
-    asyncio.run(main(client))
-finally:
-    client.close()
+while True:
+    client = MQTTClient(config)
+    try:
+        asyncio.run(main(client))
+    except Exception as e:
+        print(e)
+    finally:
+        client.close()
