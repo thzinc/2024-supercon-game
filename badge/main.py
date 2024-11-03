@@ -34,14 +34,16 @@ async def send_projectile(client, row):
 
     sent_projectiles[r] = True
 
+    ev = client.publish(
+        TOPIC_PREFIX + "/projectile/" + DEVICE_ID, pack("B", row), qos=1
+    )
+
     for col in range(7, 0, -1):
         projectiles.add((row, col))
         await asyncio.sleep(0.200)
         clears.add((row, col))
 
-    await client.publish(
-        TOPIC_PREFIX + "/projectile/" + DEVICE_ID, pack("B", row), qos=1
-    )
+    await asyncio.gather(ev)
 
     sent_projectiles[r] = False
 
