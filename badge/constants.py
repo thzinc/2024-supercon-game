@@ -1,0 +1,5 @@
+WIFI_SSID = "Supercon"
+WIFI_PASSWORD = "whatpassword"
+MQTT_HOST = "broker.emqx.io"
+GAME_ID = "YOUR_UNIQUE_GAME_HERE"
+DEVICE_ID = "YOUR_UNIQUE_NAME_HERE"
