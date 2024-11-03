@@ -194,7 +194,7 @@ async def player(client):
 async def messages(client):
     own_topic = TOPIC_PREFIX + "/projectile/" + DEVICE_ID
     async for topic, msg, retained in client.queue:
-        if topic.decode() == own_topic:
+        if GAME_ID != "demo" and topic.decode() == own_topic:
             pass
         else:
             (row,) = unpack("B", msg)
